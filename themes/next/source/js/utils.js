@@ -242,6 +242,24 @@ NexT.utils = {
 
   registerSidebarTOC: function() {
     const navItems = document.querySelectorAll('.post-toc li');
+    // 如果使用的是 markdown-it 进行的渲染，标题中并没有 id，会导致后续处理中出错
+    var headers = document.querySelectorAll(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].join(','));
+    navItems.forEach(element => {
+      var link = element.querySelector('a.nav-link');
+      var targetId = link.getAttribute('href').replace('#', '');
+      var target = document.getElementById(targetId);
+      // 没有找到对应元素
+      if (!target) {
+        var newTargetId = link.querySelector('span.nav-text').innerText;
+        for (var header of headers) {
+          if (header.innerText === newTargetId) {
+            header.setAttribute('id', newTargetId);
+            link.setAttribute('href', '#' + newTargetId);
+            break;
+          }
+        }
+      }
+    });
     const sections = [...navItems].map(element => {
       var link = element.querySelector('a.nav-link');
       // TOC item animation navigate.
