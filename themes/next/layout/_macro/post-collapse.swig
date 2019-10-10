@@ -1,20 +1,26 @@
 {% macro render(posts) %}
 {%- for post in posts %}
 
-  {# Show year #}
-  {%- set year %}
-  {%- set post.year = date(post.date, 'YYYY') %}
+  {%- set current_year %}
+  {%- set year = date(post.date, 'YYYY') %}
 
-  {%- if post.year !== year %}
-    {%- set year = post.year %}
-    <div class="collection-title">
-      <{%- if theme.seo %}h2{% else %}h1{%- endif %} class="archive-year" id="archive-year-{{ year }}">{{ year }}</{%- if theme.seo %}h2{% else %}h1{%- endif %}>
+  {%- if year !== current_year %}
+    {%- set current_year = year %}
+    <div class="collection-year">
+      <{%- if theme.seo %}h2{% else %}h1{%- endif %} class="collection-header">{{ current_year }}</{%- if theme.seo %}h2{% else %}h1{%- endif %}>
     </div>
   {%- endif %}
-  {# endshow #}
 
-  <article class="post" itemscope itemtype="http://schema.org/Article">
+  <article itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="{{ moment(post.date).format() }}"
+              content="{{ date(post.date, config.date_format) }}">
+          {{ date(post.date, 'MM-DD') }}
+        </time>
+      </div>
 
       <{%- if theme.seo %}h3{% else %}h2{%- endif %} class="post-title">
         {%- if post.link %}{# Link posts #}
@@ -27,14 +33,6 @@
           </a>
         {%- endif %}
       </{%- if theme.seo %}h3{% else %}h2{%- endif %}>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="{{ moment(post.date).format() }}"
-              content="{{ date(post.date, config.date_format) }}">
-          {{ date(post.date, 'MM-DD') }}
-        </time>
-      </div>
 
     </header>
   </article>

@@ -1,6 +1,6 @@
 // Menu
 // --------------------------------------------------
-.site-brand-wrapper {
+.site-brand-container {
   flex-shrink: 0;
 }
 
@@ -23,16 +23,11 @@
 }
 
 .menu {
-  // float: right;
   margin: 0;
 
   +mobile() {
     margin: 10px 0;
     padding: 0;
-  }
-
-  br {
-    display: none;
   }
 
   .menu-item {
@@ -44,7 +39,7 @@
     }
 
     .badge {
-      background-color: #fff;
+      background-color: white;
       border-radius: 10px;
       color: $black-light;
       display: inline-block;
@@ -63,7 +58,6 @@
     }
 
     a, span.exturl {
-      border: none;
       border-radius: 2px;
       padding: 0 10px;
       transition-property: background;
@@ -75,8 +69,6 @@
       &:hover {
         @extend .menu-item-active a;
       }
-
-      disable-touch-hover();
     }
   }
 

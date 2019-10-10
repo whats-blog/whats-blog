@@ -2,8 +2,6 @@
 
 'use strict';
 
-const priority = hexo.config.inject_priority || {};
-
 // Add comment
 hexo.extend.filter.register('theme_inject', injects => {
   let theme = hexo.theme.config;
@@ -11,7 +9,7 @@ hexo.extend.filter.register('theme_inject', injects => {
 
   injects.comment.raw('vkontakte-comments', '<div class="comments" id="comments"><div id="vk_comments"></div></div>', {
     configKey: 'vkontakte',
-    button: '<i class="fa fa-vk" aria-hidden="true"></i> vkontakte'
+    button   : '<i class="fa fa-vk" aria-hidden="true"></i> vkontakte'
   }, {cache: true});
 
-}, priority.vkontakte_comments_plugin);
+});

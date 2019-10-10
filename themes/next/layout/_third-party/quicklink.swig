@@ -12,7 +12,7 @@
       {%- set loadQL = true %}
     {%- endif %}
   {%- endif %}
-  
+
   {%- if loadQL or (page.quicklink or post.quicklink) %}
     <script src="{{ quicklink_uri }}"></script>
     <script>
@@ -22,7 +22,7 @@
         quicklink({
           timeout: {{ theme.quicklink.timeout }},
           priority: {{ theme.quicklink.priority }},
-          ignores: [uri => uri.includes('#'),uri => uri == '{{ url.replace('index.html', '') }}',{{ theme.quicklink.ignores }}]
+          ignores: [uri => uri.includes('#'),uri => uri == '{{ url | replace('index.html', '') }}',{{ theme.quicklink.ignores }}]
         });
       {%- if theme.quicklink.delay %}
         });

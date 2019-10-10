@@ -3,15 +3,20 @@
   color: $selection-color;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   background: $body-bg-color;
   color: $text-color;
   font-family: $font-family-base;
   font-size: $font-size-base;
   line-height: $line-height-base;
-  position: relative; // Required by scrollspy
 
   +tablet-mobile() {
+    // Remove the padding of body when the sidebar is open.
+    padding-left: 0 !important;
     padding-right: 0 !important;
   }
 }
@@ -36,8 +41,6 @@ p {
 
 a, span.exturl {
   word-wrap();
-  // Remove the gray background color from active links in IE 10.
-  background-color: transparent;
   border-bottom: 1px solid $link-decoration-color;
   color: $link-color;
   outline: none;
@@ -52,17 +55,10 @@ a, span.exturl {
   cursor: pointer;
 }
 
-video {
+iframe, img, video {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  max-width: 100%;
-}
-
-img {
-  display: block;
-  height: auto;
-  margin: auto;
   max-width: 100%;
 }
 
@@ -75,7 +71,7 @@ hr {
     transparent 4px,
     transparent 8px
   );
-  border: none;
+  border: 0;
   height: 3px;
   margin: 40px 0;
 }

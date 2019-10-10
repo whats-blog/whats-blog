@@ -1,12 +1,13 @@
 {%- set js_vendors = {} %}
 {%- set js_defer_vendors = {} %}
-{%- set js_vendors.jquery = 'jquery/index.js?v=3.4.1' %}
+{%- set js_vendors.anime = 'anime.min.js?v=3.1.0' %}
 
 {%- if theme.pjax %}
   {%- set js_vendors.pjax = 'pjax/pjax.min.js?v=0.2.8' %}
 {%- endif %}
 
 {%- if theme.fancybox %}
+  {%- set js_vendors.jquery = '//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js' %}
   {%- set js_vendors.fancybox = '//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js' %}
 {%- endif %}
 
@@ -53,7 +54,7 @@
 
 {%- if theme.canvas_ribbon.enable %}
   {%- set canvas_ribbon_uri = theme.vendors.canvas_ribbon | default(next_vendors('canvas-ribbon/canvas-ribbon.js')) %}
-  <script size="{{ theme.canvas_ribbon.size }}" alpha="{{ theme.canvas_ribbon.alpha }}" zIndex="{{theme.canvas_ribbon.zIndex }}" src="{{ canvas_ribbon_uri }}"></script>
+  <script size="{{ theme.canvas_ribbon.size }}" alpha="{{ theme.canvas_ribbon.alpha }}" zIndex="{{ theme.canvas_ribbon.zIndex }}" src="{{ canvas_ribbon_uri }}"></script>
 {%- endif %}
 
 {%- for name, internal in js_vendors %}
