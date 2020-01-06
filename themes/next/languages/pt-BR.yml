@@ -30,17 +30,11 @@ post:
   sticky: Sticky
   views: Views
   related_posts: Related Posts
-  copy_button: Copy
-  copy_success: Copied
-  copy_failure: Copy failed
   copyright:
     author: Post author
     link: Post link
     license_title: Copyright Notice
     license_content: "All articles in this blog are licensed under %s unless stating additionally."
-page:
-  totally: Totalmente
-  tags: tags
 footer:
   powered: "Feito com %s"
   theme: Tema
@@ -61,7 +55,6 @@ counter:
     other: "%d posts no total."
 state:
   posts: Posts
-  pages: Páginas
   tags: Tags
   categories: Categorias
 search:
